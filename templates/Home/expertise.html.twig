@@ -1,0 +1,37 @@
+<div class="hide-on-med-and-down  margin-encre">
+    <div class="container expertise-title-pc">
+        <div class="center" id="expertise">{{ sourcink.title | raw  }}</div>
+        <div class="row center">
+            <div class="col s12">
+                <p aria-hidden="true" class="expertise-texte center">
+                    {{ sourcink.text1 | raw  }}
+                </p>
+            </div>
+
+        </div>
+        <p aria-hidden="true" class="work-name-title">{{ sourcink.text2 | raw  }}</p>
+    </div>
+    <div class="row center">
+        {% for category in categories %}
+            <div class="col s6 center">
+                {% if category.isPremium == false %}
+
+                    {% for work in category.works %}
+                        <p aria-hidden="true" class="center work-name">{{ work.name }}</p>
+                    {% endfor %}
+                    <img class="work img-fleche" src="{{ asset('media/fleche.png') }}" alt="Fleche qui pointe vers le
+                     bas" >
+                {% endif %}
+            </div>
+            <div class="col s6 center">
+                {% if category.isPremium == true %}
+                    {% for work in category.works %}
+                        <p aria-hidden="true" class="center work-name">{{ work.name }}</p>
+                    {% endfor %}
+                    <img class="work img-fleche" src="{{ asset('media/fleche.png') }}" alt="Fleche qui pointe vers le
+                     bas">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

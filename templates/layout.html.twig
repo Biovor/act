@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+
+    {% if metaDescription.contents is defined and metaDescription.contents is not empty  %}
+    <meta name="description" content="{{ metaDescription.contents  |striptags |raw }}">
+    <meta property="og:description" content="{{ metaDescription.contents  |striptags |raw }}"/>
+    {% else %}
+        <meta name="description" content="Sourcink, l'agence de sourcing spécialisée en recrutement juridique,
+        fiscal et RH. Recherche et présélection de candidatures qualifiées">
+        <meta property="og:description" content="Sourcink, l'agence de sourcing spécialisée en recrutement juridique,
+        fiscal et RH. Recherche et présélection de candidatures qualifiées"/>
+    {% endif %}
+
+    {% if metaDescription.picture is defined and metaDescription.picture == null %}
+        <meta property="og:image" content="{{ asset(app.request.schemeAndHttpHost~'media/sourcink.png') }}"/>
+    {% elseif metaDescription.picture is defined and  metaDescription.picture is not empty %}
+        <meta property="og:image" content="{{ asset(app.request.schemeAndHttpHost~'/img/'~metaDescription
+        .picture)}}"/>
+    {% elseif metaDescription.image is defined and  metaDescription.image is not empty %}
+        <meta property="og:image" content="{{ asset(app.request.schemeAndHttpHost~'/img/jobPicture/'~metaDescription
+        .image)}}"/>
+    {% else %}
+        <meta property="og:image" content="{{ asset(app.request.schemeAndHttpHost~'/media/Avocat2.jpg') }}"/>
+    {% endif %}
+
+    {% if metaDescription.title is defined and  metaDescription.title is not empty %}
+        <meta property="og:title" content="{{'Sourcink | '~metaDescription.title}}"/>
+    {% else %}
+        <meta property="og:title" content="Sourcink | Recrutement juridique, fiscal et RH." />
+    {% endif %}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ app.request.uri }}" />
+    <meta property="og:site_name" content="sourcink.com"/>
+    <title>{% block title %}Sourcink | Recrutement juridique, fiscal et RH.{% endblock %}</title>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/googleapis.fonts.css') }}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/base-v2.3.css') }}"  media="screen,projection"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('media/favicon.ico') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% block meta %}
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lazyload.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/script-v2.1.js') }}"></script>
+    <script type="text/javascript" id="cookiebanner"
+            src="{{ asset('js/cookiebanner.min.js') }}" data-message=" Nous utilisons des cookies pour vous garantir
+            la meilleure expérience sur notre site. Si vous continuez à utiliser ce dernier, nous considérerons que
+            vous acceptez l'utilisation des cookies." data-linkmsg="En savoir plus"></script>
+{% endblock %}
+</body>
+</html>
