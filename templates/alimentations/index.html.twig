@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alimentations index{% endblock %}
+
+{% block body %}
+    <h1>Alimentations index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marque</th>
+                <th>Gamme</th>
+                <th>Céréales</th>
+                <th>AlimentType</th>
+                <th>Animal</th>
+                <th>Bio</th>
+                <th>Glucides</th>
+                <th>Protéines</th>
+                <th>Lipides</th>
+                <th>Fibres</th>
+                <th>Cendres</th>
+                <th>Humidité</th>
+                <th>Calcium</th>
+                <th>Phosphore</th>
+                <th>RapportPhosphocalcique</th>
+                <th>Calories</th>
+                <th>RatioProtidoCalorique</th>
+                <th>Omega6</th>
+                <th>Omega3</th>
+                <th>Ingrédients</th>
+                <th>LienSource</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alimentation in alimentations %}
+            <tr>
+                <td>{{ alimentation.id }}</td>
+                <td>{{ alimentation.marque }}</td>
+                <td>{{ alimentation.gamme }}</td>
+                <td>{{ alimentation.céréales ? 'Yes' : 'No' }}</td>
+                <td>{{ alimentation.alimentType }}</td>
+                <td>{{ alimentation.animal }}</td>
+                <td>{{ alimentation.bio ? 'Yes' : 'No' }}</td>
+                <td>{{ alimentation.glucides }}</td>
+                <td>{{ alimentation.protéines }}</td>
+                <td>{{ alimentation.lipides }}</td>
+                <td>{{ alimentation.fibres }}</td>
+                <td>{{ alimentation.cendres }}</td>
+                <td>{{ alimentation.humidité }}</td>
+                <td>{{ alimentation.calcium }}</td>
+                <td>{{ alimentation.phosphore }}</td>
+                <td>{{ alimentation.rapportPhosphocalcique }}</td>
+                <td>{{ alimentation.calories }}</td>
+                <td>{{ alimentation.ratioProtidoCalorique }}</td>
+                <td>{{ alimentation.omega6 }}</td>
+                <td>{{ alimentation.omega3 }}</td>
+                <td>{{ alimentation.ingrédients }}</td>
+                <td>{{ alimentation.lienSource }}</td>
+                <td>
+                    <a href="{{ path('alimentations_show', {'id': alimentation.id}) }}">show</a>
+                    <a href="{{ path('alimentations_edit', {'id': alimentation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="23">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('alimentations_new') }}">Create new</a>
+{% endblock %}
