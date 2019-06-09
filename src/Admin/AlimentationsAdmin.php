@@ -7,12 +7,7 @@
  */
 namespace App\Admin;
 
-use App\Entity\Actor;
-use App\Entity\Director;
-use App\Entity\PublicAge;
-use App\Entity\TypeFilms;
-use App\Entity\YearOfProduction;
-use App\Form\PictureType;
+
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -26,7 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
-class FilmsAdmin extends AbstractAdmin
+class AlimentationsAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
