@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AlimentationsType{% endblock %}
+
+{% block body %}
+    <h1>Create new AlimentationsType</h1>
+
+    {{ include('alimentations_type/_form.html.twig') }}
+
+    <a href="{{ path('alimentations_type_index') }}">back to list</a>
+{% endblock %}

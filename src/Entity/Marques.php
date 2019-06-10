@@ -29,7 +29,7 @@ class Marques
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $dateCréation;
+    private $dateCreation;
 
     public function getId(): ?int
     {
@@ -60,15 +60,24 @@ class Marques
         return $this;
     }
 
-    public function getDateCréation(): ?int
+    public function getDateCreation(): ?int
     {
-        return $this->dateCréation;
+        return $this->dateCreation;
     }
 
-    public function setDateCréation(?int $dateCréation): self
+    public function setDateCreation(?int $dateCreation): self
     {
-        $this->dateCréation = $dateCréation;
+        $this->dateCréation = $dateCreation;
 
         return $this;
+    }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNom();
     }
 }

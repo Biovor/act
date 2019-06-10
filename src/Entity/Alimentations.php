@@ -17,32 +17,45 @@ class Alimentations
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * Many Alimentations have one Marques.
+     * @ORM\ManyToOne(targetEntity="Marques", inversedBy="alimentations")
+     * @ORM\JoinColumn(name="marque_id", referencedColumnName="id")
      */
     private $marque;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * Many Alimentations have one Gammes.
+     * @ORM\ManyToOne(targetEntity="Gammes", inversedBy="alimentations")
+     * @ORM\JoinColumn(name="gamme_id", referencedColumnName="id")
      */
     private $gamme;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $céréales;
+    private $referance;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $cereales;
+
+    /**
+     * Many Alimentations have one AlimentationsType.
+     * @ORM\ManyToOne(targetEntity="AlimentationsType", inversedBy="alimentations")
+     * @ORM\JoinColumn(name="aliment_type_id", referencedColumnName="id")
      */
     private $alimentType;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * Many Alimentations have one Animal.
+     * @ORM\ManyToOne(targetEntity="Animal", inversedBy="alimentations")
+     * @ORM\JoinColumn(name="animal_id", referencedColumnName="id")
      */
     private $animal;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $bio;
 
@@ -54,7 +67,7 @@ class Alimentations
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $protéines;
+    private $proteines;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -74,7 +87,7 @@ class Alimentations
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $humidité;
+    private $humidite;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -114,7 +127,7 @@ class Alimentations
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $ingrédients;
+    private $ingredients;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -160,18 +173,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getCéréales()
+    public function getCereales()
     {
-        return $this->céréales;
+        return $this->cereales;
     }
 
     /**
-     * @param mixed $céréales
+     * @param mixed $cereales
      * @return Alimentations
      */
-    public function setCéréales($céréales)
+    public function setCereales($cereales)
     {
-        $this->céréales = $céréales;
+        $this->cereales = $cereales;
         return $this;
     }
 
@@ -250,18 +263,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getProtéines()
+    public function getProteines()
     {
-        return $this->protéines;
+        return $this->proteines;
     }
 
     /**
-     * @param mixed $protéines
+     * @param mixed $proteines
      * @return Alimentations
      */
-    public function setProtéines($protéines)
+    public function setProteines($proteines)
     {
-        $this->protéines = $protéines;
+        $this->proteines = $proteines;
         return $this;
     }
 
@@ -322,18 +335,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getHumidité()
+    public function getHumidite()
     {
-        return $this->humidité;
+        return $this->humidite;
     }
 
     /**
-     * @param mixed $humidité
+     * @param mixed $humidite
      * @return Alimentations
      */
-    public function setHumidité($humidité)
+    public function setHumidite($humidite)
     {
-        $this->humidité = $humidité;
+        $this->humidite = $humidite;
         return $this;
     }
 
@@ -466,18 +479,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getIngrédients()
+    public function getIngredients()
     {
-        return $this->ingrédients;
+        return $this->ingredients;
     }
 
     /**
-     * @param mixed $ingrédients
+     * @param mixed $ingredients
      * @return Alimentations
      */
-    public function setIngrédients($ingrédients)
+    public function setIngredients($ingredients)
     {
-        $this->ingrédients = $ingrédients;
+        $this->ingredients = $ingredients;
         return $this;
     }
 
@@ -499,6 +512,23 @@ class Alimentations
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getReferance()
+    {
+        return $this->referance;
+    }
+
+    /**
+     * @param mixed $referance
+     * @return Alimentations
+     */
+    public function setReferance($referance)
+    {
+        $this->referance = $referance;
+        return $this;
+    }
 
     public function getId(): ?int
     {
