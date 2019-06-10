@@ -194,8 +194,14 @@
     "sonata-project/doctrine-orm-admin-bundle": {
         "version": "3.9.0"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "2.0.1"
+    },
+    "sonata-project/google-authenticator": {
+        "version": "2.2.0"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
@@ -227,6 +233,9 @@
             "bin/console",
             "config/bootstrap.php"
         ]
+    },
+    "symfony/contracts": {
+        "version": "v1.1.0"
     },
     "symfony/css-selector": {
         "version": "v4.3.0"

@@ -12,8 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-{% include "menu.html.twig" %}
-
+{#{% include "menu.html.twig" %}#}
+{% if not app.user %}
+<li class="nav-item">
+    <a href="{{ path('security_login') }}" class="nav-link">
+        Connexion
+    </a>
+</li>
+{% else %}
+<li class="nav-item">
+    <a href="{{ path('security_logout') }}" class="nav-link">
+        Déconnexion
+    </a>
+</li>
+{% endif %}
 <div class="container">
     {% block body %}{% endblock %}
 </div>
