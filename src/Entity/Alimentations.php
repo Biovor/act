@@ -31,14 +31,20 @@ class Alimentations
     private $gamme;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $referance;
+    private $reference;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $cereales;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $vegetarien;
+
 
     /**
      * Many Alimentations have one AlimentationsType.
@@ -60,67 +66,72 @@ class Alimentations
     private $bio;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $glucides;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $proteines;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $lipides;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $fibres;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $cendres;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $humidite;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $calcium;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $phosphore;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $rapportPhosphocalcique;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $calories;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $ratioProtidoCalorique;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $taurine;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
      */
     private $omega6;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $omega3;
 
@@ -515,18 +526,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getReferance()
+    public function getReference()
     {
-        return $this->referance;
+        return $this->reference;
     }
 
     /**
-     * @param mixed $referance
+     * @param mixed $reference
      * @return Alimentations
      */
-    public function setReferance($referance)
+    public function setReference($reference)
     {
-        $this->referance = $referance;
+        $this->reference = $reference;
         return $this;
     }
 
@@ -534,4 +545,42 @@ class Alimentations
     {
         return $this->id;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getVegetarien()
+    {
+        return $this->vegetarien;
+    }
+
+    /**
+     * @param mixed $vegetarien
+     * @return Alimentations
+     */
+    public function setVegetarien($vegetarien)
+    {
+        $this->vegetarien = $vegetarien;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTaurine()
+    {
+        return $this->taurine;
+    }
+
+    /**
+     * @param mixed $taurine
+     * @return Alimentations
+     */
+    public function setTaurine($taurine)
+    {
+        $this->taurine = $taurine;
+        return $this;
+    }
+
 }

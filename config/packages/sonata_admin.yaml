@@ -1,10 +1,17 @@
 sonata_admin:
     title: 'Administration ACT'
+    title_logo: img/logo.png
+    show_mosaic_button : false
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: left }
+    templates :
+            search :              '@SonataAdmin/Core/search.html.twig'
+            search_result_block : '@SonataAdmin/Block/block_search_result.html.twig'
 
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts: [admin]
+        sonata.admin.block.search_result :
+            contexts : [ admin ]
