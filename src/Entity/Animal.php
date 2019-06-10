@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,5 +37,9 @@ class Animal
         $this->nom = $nom;
 
         return $this;
+    }
+
+    public function __construct() {
+        $this->features = new ArrayCollection();
     }
 }
