@@ -8,12 +8,10 @@
 
 namespace App\Admin;
 
-use App\Entity\Gammes;
 use Sonata\AdminBundle\Admin\AbstractAdmin ;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper ;
 use Sonata\AdminBundle\Form\FormMapper ;
-use Sonata\AdminBundle\Form\Type\ModelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class MarquesAdmin extends AbstractAdmin
@@ -21,17 +19,31 @@ final class MarquesAdmin extends AbstractAdmin
     protected function configureFormFields ( FormMapper $formMapper )
     {
         $formMapper
-            ->add('nom', TextType::class);
+            ->add('nom', TextType::class, [
+                'label'=> "Nom de la marque"
+            ]);
 
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('nom');
+        $datagridMapper
+            ->add('nom', null, [
+                'label' => "Nom de la marque",
+                'show_filter' => true,
+            ]);
     }
 
     protected function configureListFields ( ListMapper $listMapper )
     {
-        $listMapper->addIdentifier('nom');
+        $listMapper
+            ->add('nom', null, [
+                'label' => "Nom de la marque"])
+            ->add('_action', 'actions', [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                ]
+            ]);
     }
 }

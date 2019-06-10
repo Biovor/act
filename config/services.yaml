@@ -31,33 +31,33 @@ services:
         class: App\Admin\AlimentationsAdmin
         arguments: [~, App\Entity\Alimentations, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Alimentations }
+            - { name: sonata.admin, manager_type: orm, group : 'Alimentations', label: Alimentations }
         public: true
 
     admin.alilmentationsType:
         class: App\Admin\AlimentationsTypeAdmin
         arguments: [~, App\Entity\AlimentationsType, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Type d'alimentations }
+            - { name: sonata.admin, manager_type: orm, group : 'Alimentations', label: Type d'alimentations }
         public: true
 
     admin.Marques:
         class: App\Admin\MarquesAdmin
         arguments: [~, App\Entity\Marques, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Marques }
+            - { name: sonata.admin, manager_type: orm, group : 'Alimentations',  label: Les marques }
         public: true
 
     admin.Animal:
         class: App\Admin\AnimalAdmin
         arguments: [~, App\Entity\Animal, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Animaux }
+            - { name: sonata.admin, manager_type: orm, group : 'Alimentations', label: Type d'animaux  }
         public: true
 
     admin.Gammes:
         class: App\Admin\GammesAdmin
         arguments: [~, App\Entity\Gammes, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Gammes }
+            - { name: sonata.admin, manager_type: orm, group : 'Alimentations', label: Les gammes }
         public: true

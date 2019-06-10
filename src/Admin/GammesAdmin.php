@@ -30,11 +30,29 @@ final class GammesAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('nom');
+        $datagridMapper
+            ->add('marques.nom', null, [
+                'label' => "Marque",
+                'show_filter' => true,
+                ])
+            ->add('nom', null, [
+                'label' => "Nom de la gamme",
+                'show_filter' => true,
+                ]);
     }
 
     protected function configureListFields ( ListMapper $listMapper )
     {
-        $listMapper->addIdentifier('nom');
+        $listMapper
+            ->add('marques.nom', null, [
+                'label' => "Marque"])
+            ->add('nom', null, [
+                'label' => "Nom de la gamme"])
+            ->add('_action', 'actions', [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                ]
+            ]);
     }
 }

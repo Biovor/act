@@ -19,16 +19,30 @@ final class AlimentationsTypeAdmin extends AbstractAdmin
     protected function configureFormFields ( FormMapper $formMapper )
     {
         $formMapper
-            ->add('nom', TextType::class);
+            ->add('nom', TextType::class, [
+                'label'=> "Type d'aliments"
+            ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('nom');
+        $datagridMapper
+            ->add('nom', null, [
+                'label' => "Type d'aliments",
+                'show_filter' => true,
+                ]);
     }
 
     protected function configureListFields ( ListMapper $listMapper )
     {
-        $listMapper->addIdentifier('nom');
+        $listMapper
+            ->add('nom', null, [
+                'label' => "Type d'aliments"])
+            ->add('_action', 'actions', [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                ]
+            ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Alimentations;
+use App\Entity\Marques;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -17,7 +18,7 @@ class jsonController extends Controller
         ignore_user_abort(true);
         set_time_limit(10000);
         $em = $this->getDoctrine()->getManager();
-        $jsonFile = file_get_contents($this->get('kernel')->getRootDir() . '/../public/alimentations.json');
+        $jsonFile = file_get_contents($this->get('kernel')->getRootDir() . '/../public/import.json');
         $json = json_decode($jsonFile);
 
         if ($json != null) {
@@ -34,9 +35,17 @@ class jsonController extends Controller
                     $alimentation->setGamme($value->Gamme);
                 }
 
-                if (isset($value->Céréales)) {
-                    $alimentation->setCéréales($value->Céréales);
+                if (isset($value->Ref)) {
+                    $alimentation->setReference($value->Ref);
                 }
+
+                if (isset($value->Céréales)) {
+                    $alimentation->setCereales($value->Céréales);
+                }
+
+                if (isset($value->Vegetarien)) {
+                    $alimentation->setVegetarien($value->Vegetarien);
+                } else $alimentation->setVegetarien(0);
 
                 if (isset($value->AlimentType)) {
                     $alimentation->setAlimentType($value->AlimentType);
@@ -55,7 +64,7 @@ class jsonController extends Controller
                 }
 
                 if (isset($value->Protéines)) {
-                    $alimentation->setProtéines($value->Protéines);
+                    $alimentation->setProteines($value->Protéines);
                 }
 
                 if (isset($value->Lipides)) {
@@ -71,7 +80,7 @@ class jsonController extends Controller
                 }
 
                 if (isset($value->Humidité)) {
-                    $alimentation->setHumidité($value->Humidité);
+                    $alimentation->setHumidite($value->Humidité);
                 }
 
                 if (isset($value->Calcium)) {
@@ -84,6 +93,10 @@ class jsonController extends Controller
 
                 if (isset($value->RapportPhosphocalcique)) {
                     $alimentation->setRapportPhosphocalcique($value->RapportPhosphocalcique);
+                }
+
+                if (isset($value->Taurine)) {
+                    $alimentation->setTaurine($value->Taurine);
                 }
 
                 if (isset($value->Omega6)) {
@@ -103,7 +116,7 @@ class jsonController extends Controller
                 }
 
                 if (isset($value->Ingrédients)) {
-                    $alimentation->setIngrédients($value->Ingrédients);
+                    $alimentation->setIngredients($value->Ingrédients);
                 }
 
                 if (isset($value->LienSource)) {
