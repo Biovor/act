@@ -61,3 +61,31 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group : 'Alimentations', label: Les gammes }
         public: true
+
+    admin.Ingredients:
+        class: App\Admin\IngredientsAdmin
+        arguments: [~, App\Entity\Ingredients, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group : 'Ingredients', label: Les ingrédients }
+        public: true
+
+    admin.CategorieIngredients:
+        class: App\Admin\CategorieIngredientsAdmin
+        arguments: [~, App\Entity\CategorieIngredients, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group : 'Ingredients', label: Les Catégories }
+        public: true
+
+    admin.SousCategorieIngredients:
+        class: App\Admin\SousCategorieIngredientsAdmin
+        arguments: [~, App\Entity\SousCategorieIngredients, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group : 'Ingredients', label: Les Sous catégories }
+        public: true
+
+    admin.QualiteIngredients:
+        class: App\Admin\QualiteIngredientsAdmin
+        arguments: [~, App\Entity\QualiteIngredients, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group : 'Ingredients', label: Les labels de qualité }
+        public: true
