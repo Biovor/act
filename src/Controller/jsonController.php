@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Ingredients;
 use App\Entity\Alimentations;
-use App\Entity\Marques;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 class jsonController extends Controller
@@ -25,7 +26,7 @@ class jsonController extends Controller
             foreach ($json as $value) {
 
 
-                $alimentation = new Alimentations();
+                $alimentation = new alimentations();
 
                 if (isset($value->Marque)) {
                     $alimentation->setMarque($value->Marque);
@@ -122,8 +123,49 @@ class jsonController extends Controller
                 if (isset($value->LienSource)) {
                     $alimentation->setLienSource($value->LienSource);
                 }
-                
+
                 $em->persist($alimentation);
+                $em->flush();
+            }
+
+        }
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/json/ingre", name="json_ingre")
+     */
+    public function importJsonDataIngredients()
+    {
+        ignore_user_abort(true);
+        set_time_limit(10000);
+        $em = $this->getDoctrine()->getManager();
+        $jsonFile = file_get_contents($this->get('kernel')->getRootDir() . '/../public/importIngre.json');
+        $json = json_decode($jsonFile);
+
+        if ($json != null) {
+            foreach ($json as $value) {
+
+
+                $ingredient = new Ingredients();
+
+                if (isset($value->Categorie)) {
+                    $ingredient->setCategorie($value->Categorie);
+                }
+
+                if (isset($value->SousCategorie)) {
+                    $ingredient->setSousCategorie($value->SousCategorie);
+                }
+
+                if (isset($value->Ingredients)) {
+                    $ingredient->setNom($value->Ingredients);
+                }
+
+                if (isset($value->LabelQualite)) {
+                    $ingredient->setQualite($value->LabelQualite);
+                }
+
+                $em->persist($ingredient);
                 $em->flush();
             }
 
