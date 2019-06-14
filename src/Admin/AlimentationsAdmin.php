@@ -124,8 +124,8 @@ final class AlimentationsAdmin extends AbstractAdmin
             ])
             ->end()
             ->with('Ingrédients', ['class' => 'col-md-6'])
-            ->add('ingredients', TextareaType::class, [
-                'label' => "Liste des ingrédients",
+            ->add('ingredientsListe', TextareaType::class, [
+                'label' => "Liste des ingrédients sous forme de liste",
                 'required' => false,
             ])
             ->end();

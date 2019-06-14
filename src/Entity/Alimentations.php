@@ -138,7 +138,7 @@ class Alimentations
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $ingredients;
+    private $ingredientsListe;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -490,18 +490,18 @@ class Alimentations
     /**
      * @return mixed
      */
-    public function getIngredients()
+    public function getIngredientsListe()
     {
-        return $this->ingredients;
+        return $this->ingredientsListe;
     }
 
     /**
      * @param mixed $ingredients
      * @return Alimentations
      */
-    public function setIngredients($ingredients)
+    public function setIngredientsListe($ingredientsListe)
     {
-        $this->ingredients = $ingredients;
+        $this->ingredientsListe = $ingredientsListe;
         return $this;
     }
 
